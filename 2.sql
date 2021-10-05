@@ -2,6 +2,14 @@
 
 use bakery;
 
+
+
+CALL InsertValue(7, 'pizza', 3, 'dough');
+select * from savoury;
+
+DROP PROCEDURE InsertValue
+
+
 DELIMITER //
 CREATE PROCEDURE InsertValue(ID INT, ItemName VARCHAR(20), Price FLOAT, MainIngredient VARCHAR(10)) -- add required parameters
 BEGIN
@@ -20,7 +28,3 @@ BEGIN
 		);
 END //
 DELIMITER ;
-
-CALL InsertValue(7, 'pizza', 3, 'dough');
-select * from savoury;
-
