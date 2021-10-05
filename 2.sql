@@ -3,8 +3,7 @@
 use bakery;
 
 DELIMITER //
-CREATE PROCEDURE 
-InsertValue(ID INT, ItemName VARCHAR(20), Price FLOAT, MainIngredient VARCHAR(10)) -- add required parameters
+CREATE PROCEDURE InsertValue(ID INT, ItemName VARCHAR(20), Price FLOAT, MainIngredient VARCHAR(10)) -- add required parameters
 BEGIN
 -- insert values inside the Savoury table in the bakery DB
 	INSERT INTO Savoury(
