@@ -62,6 +62,7 @@ USE BAKERY;
 DELIMITER //
 
 CREATE PROCEDURE InsertValue
+-- when adding parameters into a stored procedure, you can't use null and not null etc
 (
 id int,
 item_name varchar(50),
