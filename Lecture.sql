@@ -41,10 +41,11 @@ DELIMITER ;
 
 DELIMITER //
 -- Create Stored Procedure
-CREATE PROCEDURE Greetings( GreetingWordd VARCHAR(100), FirstName VARCHAR(100))
+CREATE PROCEDURE Greetings
+(GreetingWord VARCHAR(100), FirstName VARCHAR(100))
 BEGIN
 	DECLARE FullGreeting VARCHAR(200);
-	SET FullGreeting = CONCAT(GreetingWordd,' ',FirstName);
+	SET FullGreeting = CONCAT(GreetingWord,' ',FirstName);
 	SELECT FullGreeting;
 END//
 -- Change Delimiter again
@@ -54,3 +55,56 @@ DELIMITER ;
 CALL Greetings('Bonjour,', 'Dave');
 
 -- create a stored procedure you can call to easily insert data into bakery database
+
+-- example
+USE BAKERY;
+
+DELIMITER //
+
+CREATE PROCEDURE InsertValue
+(
+id int,
+item_name varchar(50),
+price float,
+main_ingredient varchar(50)
+)
+BEGIN 
+INSERT INTO bakery.savoury (
+id,
+item_name,
+price,
+main_ingredient
+)
+VALUES (id,
+item_name,
+price,
+main_ingredient);
+
+END //
+
+DELIMITER ;
+
+CALL InsertValue(24, 'pizza', 22, 'dough');
+
+select * from bakery.savoury;
+
+-- Clare's code
+
+DELIMITER //
+CREATE PROCEDURE InsertValue(ID INT, ItemName VARCHAR(20), Price FLOAT, MainIngredient VARCHAR(10)) -- add required parameters
+BEGIN
+-- insert values inside the Savoury table in the bakery DB
+	INSERT INTO Savoury(
+		id,
+		item_name,
+		price,
+		main_ingredient
+		)
+    VALUES(
+		ID,
+		ItemName,
+		Price,
+		MainIngredient
+		);
+END //
+DELIMITER ;
